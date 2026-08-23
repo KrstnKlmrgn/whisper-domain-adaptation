@@ -12,9 +12,9 @@ seed: 42
 # ============================================================
 
 data:
-  dataset_path: "/nethome/whisper/data/"
-  test_set: "test_prague.csv"
-  text_column: "sentence"
+  dataset_path: /nethome/whisper/data/
+  test_set: test_prague.csv
+  text_column: sentence
 
 
 # ============================================================
@@ -22,7 +22,7 @@ data:
 # ============================================================
 
 model:
-  name: "gpt2"
+  name: gpt2
   path: ""
 
 
@@ -31,11 +31,11 @@ model:
 # ============================================================
 
 tokenizer:
-  type: "whisper_multi"   # options: gpt2, whisper_en, whisper_multi
-  whisper_model: "medium"
-  whisper_path: "openai/whisper-"
-  language: "english"
-  task: "transcribe"
+  type: whisper_multi   # options: gpt2, whisper_en, whisper_multi
+  whisper_model: medium
+  whisper_path: openai/whisper-
+  language: english
+  task: transcribe
   no_timestamps: true
 
 

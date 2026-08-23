@@ -13,16 +13,16 @@ seed: 42
 
 data:
 
-  dataset_path: "/data"
-  text_column: "text"
+  dataset_path: /data
+  text_column: text
 
   train_files:
-    - "atco2.txt"
-    - "atcosim_train.txt"
-    - "uwb_atcc_train.txt"
-    - "uwb_atcc_test.txt"
-    - "vienna.txt"
-    - "atcosim_test.txt"
+    - atco2.txt
+    - atcosim_train.txt
+    - uwb_atcc_train.txt
+    - uwb_atcc_test.txt
+    - vienna.txt
+    - atcosim_test.txt
 
   test_size: 0.2
 
@@ -33,7 +33,7 @@ data:
 
 model:
 
-  name: "gpt2"
+  name: gpt2
   path: ""
 
 
@@ -43,12 +43,12 @@ model:
 
 tokenizer:
 
-  type: "whisper_multi"
-  whisper_model: "medium"
-  whisper_path: "openai/whisper-"
+  type: whisper_multi
+  whisper_model: medium
+  whisper_path: openai/whisper-
 
-  language: "english"
-  task: "transcribe"
+  language: english
+  task: transcribe
 
 
 # ============================================================
@@ -66,7 +66,7 @@ embedding:
   # fvt:
   #   copy shared tokens and initialize missing tokens
   #   using GPT2 subtoken averages
-  reorder_type: "none"
+  reorder_type: none
 
 
 # ============================================================
@@ -87,8 +87,8 @@ training:
 
   weight_decay: 0.01
 
-  save_strategy: "epoch"
-  logging_strategy: "epoch"
+  save_strategy: epoch
+  logging_strategy: epoch
 
   save_total_limit: 2
 
@@ -101,4 +101,4 @@ training:
 
 output:
   save_model: true
-  path: "results/"
+  path: results/
