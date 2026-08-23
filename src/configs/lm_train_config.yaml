@@ -1,0 +1,104 @@
+# Configuration for Language Model fine-tuning experiments
+
+# ============================================================
+# Setup
+# ============================================================
+
+seed: 42
+
+
+# ============================================================
+# Data
+# ============================================================
+
+data:
+
+  dataset_path: "/data"
+  text_column: "text"
+
+  train_files:
+    - "atco2.txt"
+    - "atcosim_train.txt"
+    - "uwb_atcc_train.txt"
+    - "uwb_atcc_test.txt"
+    - "vienna.txt"
+    - "atcosim_test.txt"
+
+  test_size: 0.2
+
+
+# ============================================================
+# Model
+# ============================================================
+
+model:
+
+  name: "gpt2"
+  path: ""
+
+
+# ============================================================
+# Tokenizer
+# ============================================================
+
+tokenizer:
+
+  type: "whisper_multi"
+  whisper_model: "medium"
+  whisper_path: "openai/whisper-"
+
+  language: "english"
+  task: "transcribe"
+
+
+# ============================================================
+# Embedding type
+# ============================================================
+
+embedding:
+
+  # none:
+  #   use GPT2 embeddings directly
+  #
+  # copy:
+  #   copy embeddings for shared vocabulary tokens
+  #
+  # fvt:
+  #   copy shared tokens and initialize missing tokens
+  #   using GPT2 subtoken averages
+  reorder_type: "none"
+
+
+# ============================================================
+# Training
+# ============================================================
+
+training:
+
+  learning_rate: 1e-5
+  warmup_steps: 500
+  epochs: 20
+
+  train_batch_size: 16
+  eval_batch_size: 8
+
+  gradient_checkpointing: true
+  fp16: true
+
+  weight_decay: 0.01
+
+  save_strategy: "epoch"
+  logging_strategy: "epoch"
+
+  save_total_limit: 2
+
+  early_stopping_patience: 10
+
+
+# ============================================================
+# Output
+# ============================================================
+
+output:
+  save_model: true
+  path: "results/"

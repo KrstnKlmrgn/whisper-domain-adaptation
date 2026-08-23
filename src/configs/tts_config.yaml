@@ -1,0 +1,81 @@
+# Configuration for TTS generation
+
+# ============================================================
+# Setup
+# ============================================================
+
+seed: 42
+
+
+# ============================================================
+# Data
+# ============================================================
+
+data:
+  dataset_path: /data/
+  dataset_file: train_prague.csv
+  audio_column: audio
+  text_column: sentence
+  sampling_rate: 16000
+
+
+# ============================================================
+# TTS generation
+# ============================================================
+
+tts:
+  model: speecht5   # fastpitch | speecht5
+
+  use_enhancer: true
+  use_vocoder: false
+
+  # possible normalization types:
+  # - minmax
+  # - whisper
+  # - none
+  normalization: minmax
+
+
+enhancer:
+  model_name: tts_en_spectrogram_enhancer_for_asr_finetuning
+  seed: 42
+
+
+# ============================================================
+# Fastpitch
+# ============================================================
+
+fastpitch:
+  # Available models:
+  # - tts_en_fastpitch_multispeaker
+  # - tts_en_fastpitch_for_asr_finetuning
+  model_name: tts_en_fastpitch_multispeaker
+  #model_name: tts_en_fastpitch_for_asr_finetuning
+  vocoder_name: tts_en_hifitts_hifigan_ft_fastpitch
+  speaker_id: 0
+
+
+# ============================================================
+# SpeechT5
+# ============================================================
+
+speecht5:
+  model_name: microsoft/speecht5_tts
+  vocoder_name: microsoft/speecht5_hifigan
+  speaker_embeddings:
+    type: random   # random | zero
+    dataset: Matthijs/cmu-arctic-xvectors
+    dataset_config: default
+    split: validation
+
+
+# ============================================================
+# Output
+# ============================================================
+
+output:
+  path: results/
+
+  save_audio: false
+  save_spectrogram: true
+

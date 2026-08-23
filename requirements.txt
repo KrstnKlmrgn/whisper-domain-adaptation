@@ -1,0 +1,21 @@
+numpy==1.23.5
+pandas==1.3.5
+
+torch==2.4.1
+torchvision==0.19.1
+
+transformers==4.45.2
+datasets==3.0.1
+accelerate==1.0.1
+evaluate==0.4.3
+
+librosa==0.9.0
+soundfile==0.10.3.post1
+
+jiwer==3.0.4
+
+# NVIDIA NeMo TTS
+nemo_toolkit['tts']==1.20.0
+
+# Required for compatibility with NVIDIA NeMo TTS
+huggingface_hub==0.23.2
